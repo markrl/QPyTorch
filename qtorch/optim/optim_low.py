@@ -86,7 +86,7 @@ class OptimLP(Optimizer):
                 for p in group["params"]:
                     p.data = self.weight_acc[p].data
 
-        loss = self.optim.step()
+        loss = self.optim.step(closure)
 
         # switch weight into acc after stepping and quantize
         if not self.acc_quant is None:
